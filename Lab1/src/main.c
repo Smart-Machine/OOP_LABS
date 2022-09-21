@@ -1,101 +1,48 @@
+#include <ctype.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "linkedlistutils.h"
 #include "doublylinkedlistutils.h"
 
 #define NUMBER_OF_LISTS 5 
+#define BUFFER_SIZE 5000
 
-void demonstrate_how_functions_work() {
-	// create a linked list.
-	node_t* head = NULL;
-	node_t* second = NULL;
-	node_t* third = NULL;
+void print_available_storage(node_t* p_array[], int selected_list_index) 
+{
+	printf("\nAvailable storages.\n");
+	for (int i = 0; i < NUMBER_OF_LISTS; i++)
+	{
+		if (i == selected_list_index)
+			printf("* %d. ", i);
+		else
+			printf("  %d. ", i);
+		if (p_array[i] != NULL)
+			print_list(p_array[i]);
+		else
+			printf(" NULL\n");
+	}	
+}
 
-	head   = (node_t*) malloc(sizeof(node_t));
-	second = (node_t*) malloc(sizeof(node_t));
-	third  = (node_t*) malloc(sizeof(node_t));
-
-	head->value = 1;
-	head->next = second;
-
-	second->value = 2;
-	second->next = third;
-
-	third->value = 3;
-	third->next = NULL;
-
-	print_list(head);
-	printf("\n");
-
-	// show Append function
-	append(&head, 4);
-	print_list(head);
-	printf("\n");
-
-	// show Prepend function
-	prepend(&head, 5);
-	print_list(head);
-	printf("\n");
-
-	// show Reverse function
-	reverse(&head);
-	print_list(head);
-	printf("\n");
-
-	// Add a value to the specific index
-	add_nth_element(&head, 3, 10);
-	print_list(head);
-	printf("\n");
-
-	// Remove a value the from index
-	remove_nth_element(&head, 3);
-	print_list(head);
-	printf("\n");
-
-	// Sort the linked list, with re-arranging the cells, not just copying values
-	insertion_sort(&head);
-	printf("\n");
-
-	// Search for a value
-	int v = search_value(&head, 4);
-	printf("We have found %d\n", v);
-	printf("\n");
-
-	// Join two linked lists 
-	node_t* list1 = NULL;
-	append(&list1, 1);
-	append(&list1, 2);
-	append(&list1, 3);
-
-	node_t* list2 = NULL;
-	append(&list2, 4);
-	append(&list2, 5);
-	append(&list2, 6);
-
-	printf("The list are not joined.\n");
-	print_list(list1);
-	print_list(list2);
-
-	printf("Joining the lists.\n");
-	node_t* joined_list = join_lists(list1, list2);
-	print_list(joined_list);
-	printf("\n");
-
-
-	// Backwards traversal, use double-linked-list
-	dnode_t* double_linked_list = NULL;
-	d_append(&double_linked_list, 7);
-	d_append(&double_linked_list, 2);
-	d_append(&double_linked_list, 3);
-	d_append(&double_linked_list, 4);
-	d_append(&double_linked_list, 5);
-
-	d_print_list(double_linked_list);
-	backwards_travel(double_linked_list->next->next->next);
+void select_new_storage(node_t* p_array[], int* selected_list_index)
+{
+	printf("Pick a new storage.\n");
+	printf("Storage: ");
+	scanf("%d", selected_list_index);
+	for (int i = 0; i < NUMBER_OF_LISTS; i++)
+	{
+		if (i == *selected_list_index)
+			printf("* %d. ", i);
+		else
+			printf("  %d. ", i);
+		if (p_array[i] != NULL)
+			print_list(p_array[i]);
+		else
+			printf(" NULL\n");
+	}
 }
 
 int main() {
-	// demonstrate_how_functions_work();	
 	node_t* p_array[NUMBER_OF_LISTS] = {NULL};
 	node_t* current_node = NULL;
 	int selected_list_index = 0;
@@ -126,50 +73,16 @@ int main() {
 		switch (option) 
 		{
 			case 's':
-				printf("\nAvailable storages.\n");
-				for (int i = 0; i < NUMBER_OF_LISTS; i++)
-				{
-					if (i == selected_list_index)
-						printf("* %d. ", i);
-					else
-						printf("  %d. ", i);
-
-					if (p_array[i] != NULL)
-						print_list(p_array[i]);
-					else
-						printf(" NULL\n");
-				}
-				printf("Pick a new storage.\n");
-				printf("Storage: ");
-				scanf("%d", &selected_list_index);
-				for (int i = 0; i < NUMBER_OF_LISTS; i++)
-				{
-					if (i == selected_list_index)
-						printf("* %d. ", i);
-					else
-						printf("  %d. ", i);
-
-					if (p_array[i] != NULL)
-						print_list(p_array[i]);
-					else
-						printf(" NULL\n");
-				}
+				print_available_storage(p_array, selected_list_index);
+				select_new_storage(p_array, &selected_list_index);
 				break;
 
 			case 'q':
-				printf("\nAvailable storages.\n");
-				for (int i = 0; i < NUMBER_OF_LISTS; i++)
-				{
-					if (i == selected_list_index)
-						printf("* %d. ", i);
-					else
-						printf("  %d. ", i);
+				print_available_storage(p_array, selected_list_index);
+				break;
 
-					if (p_array[i] != NULL)
-						print_list(p_array[i]);
-					else
-						printf(" NULL\n");
-				}
+			case 'p':
+				print_list(p_array[selected_list_index]);
 				break;
 
 			case '1':
@@ -215,19 +128,7 @@ int main() {
 			
 			case '8':
 				printf("\tChoose two lists you want to join together.\n");
-				printf("Available storages.\n");
-				for (int i = 0; i < NUMBER_OF_LISTS; i++)
-				{
-					if (i == selected_list_index)
-						printf("* %d. ", i);
-					else
-						printf("  %d. ", i);
-
-					if (p_array[i] != NULL)
-						print_list(p_array[i]);
-					else
-						printf(" NULL\n");
-				}
+				print_available_storage(p_array, selected_list_index);
 
 				node_t* list1 = NULL;
 				node_t* list2 = NULL;
@@ -295,23 +196,33 @@ int main() {
 				break;
 			
 			case 'r':
+				print_available_storage(p_array, selected_list_index);
+				select_new_storage(p_array, &selected_list_index);
+
 				FILE* read_file;
 				read_file = fopen("src/linked_list.txt", "r");
 				if (read_file == NULL)
 					printf("Failed at opening the file.\n");
 				else 
 				{
-					char buffer[500];
+					char buffer[BUFFER_SIZE];
 					while (fscanf(read_file, "%s\n", buffer) == 1)
-						printf("%s", buffer);
-					printf("\n");
+					{
+						if (strcmp("NULL", buffer) == 0)
+							break;
+						if (strcmp("->", buffer) == 0)
+							continue;
+
+						value = atoi(buffer);
+						append(&p_array[selected_list_index], value);
+					}
 				}
+				printf("The list was loaded from the file.\n");
 				fclose(read_file);
 				break;
 
-
 			default:
-				printf("\nPick up an option from the list above.\nOption: ");
+				printf("\n\nOption: ");
 				break;
 		}
 	}
