@@ -1,6 +1,6 @@
 package chess 
 
-class Runner(chessBoard: ChessBoard) {
+class Runner(chessBoard: ChessBoard) : ChessGame() {
     private val chessBoard: ChessBoard
 
     init {

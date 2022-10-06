@@ -1,6 +1,6 @@
 package chess
 
-abstract class ChessFigure(position: String) {
+abstract class ChessFigure(position: String) : ChessGame() {
     abstract var symbol: Char
     abstract var side: String
     abstract var moves: Array<String>

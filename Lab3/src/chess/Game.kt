@@ -1,6 +1,10 @@
 package chess
 
-class ChessGame {
-    val chessBoard = ChessBoard()
-    val runner = Runner(chessBoard)
+open class ChessGame {
+    private val gameName = "TermChess"
+    private val gameVersion = "1.0.0"
+    
+    fun printGameVersion() {
+        println("${gameName}: ${gameVersion}")
+    }
 }

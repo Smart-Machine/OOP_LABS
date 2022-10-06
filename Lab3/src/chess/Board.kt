@@ -2,7 +2,7 @@ package chess
 
 import chess.figures.*
 
-class ChessBoard {
+class ChessBoard : ChessGame() {
 
     val leftWhiteRook  = Rook("a1", "white")
     val rightWhiteRook = Rook("h1", "white")
