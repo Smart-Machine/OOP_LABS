@@ -43,7 +43,7 @@ class ChessBoard : ChessGame() {
     val blackPawn7 = Pawn("g7", "black")
     val blackPawn8 = Pawn("h7", "black")
 
-    private var piecesMap: Map<String, ChessFigure> = mutableMapOf<String, ChessFigure>(
+    var piecesMap: Map<String, ChessFigure> = mutableMapOf<String, ChessFigure>(
         "leftWhiteRook"    to leftWhiteRook,
         "rightWhiteRook"   to rightWhiteRook,
         "leftBlackRook"    to leftBlackRook,
