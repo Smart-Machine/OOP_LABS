@@ -1,0 +1,14 @@
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/common/Alliance.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/pieces/Piece.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/players/WhitePlayer.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/players/BlackPlayer.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/board/Board.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/pieces/Knight.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/views/ChessView.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/common/Move.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/controllers/ChessController.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/simulation/ChessGame.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/players/Player.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/common/Tile.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/engine/models/ChessModel.java
+/home/uni/UNI/OOP/OOP_LABS/Lab6/chess/Chess/src/main/java/chess/simulation/ChessSimulation.java
